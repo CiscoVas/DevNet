@@ -23,7 +23,7 @@ if len(sys.argv) != 2 :
     print("Send only one text value as argument of the script and try again to DELETE paths!!!")
     exit()
 
-if os.environ.get("APIC_URL") == "" or os.environ.get("APIC_LOGIN") == "" or os.environ.get("APIC_PASSWORD") == "":
+if os.environ.get("APIC_URL") == "" or os.environ.get("APIC_LOGIN") == "" or os.environ.get("APIC_PASSWORD") == "" or os.environ.get("APIC_URL") == None or os.environ.get("APIC_LOGIN") == None or os.environ.get("APIC_PASSWORD") == None:
     print('Set values for all of the OS environment variables "APIC_URL" or "APIC_LOGIN" or "APIC_PASSWORD"!!!')
     exit()
 
@@ -96,7 +96,7 @@ for inf in info['imdata']:
     url3 = f"{apic_url}api/node/mo/{dnFull}.json"
     print("URL3 = " + url3)
     
-'''
+
     payload = {
         "fvRsPathAtt":{
             "attributes":{
@@ -109,6 +109,5 @@ for inf in info['imdata']:
  
     resp = requests.post(url3, verify=False, cookies=cookies, json=payload)
     print(f'TENANT = {tenant} AP = {ap} EPG = {epg} PATH_NAME = {path_name}  --- DELETED')
-'''
     
     
